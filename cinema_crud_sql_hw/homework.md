@@ -83,6 +83,8 @@ UPDATE people SET name = 'Johnny Watson' WHERE id = 12;
 
 SELECT * FROM people WHERE id = 16;
 
+<!-- SHOULDA BEEN SELECT name FROM people WHERE id = 16; -->
+
 5. The cinema is showing 'Batman Begins', but Batman is DC, not Marvel! Delete the entry from the 'movies' table.
 
 DELETE FROM movies WHERE id = 9;
