@@ -18,5 +18,12 @@ def save()
 end
 
 
+def Artist.all()
+  sql = "SELECT * FROM artists;"
+  artists_hashes = SqlRunner.run(sql)
+  return artists_hashes.map {|artist| Artist.new(artist)}
+end
+
+
 
 end
