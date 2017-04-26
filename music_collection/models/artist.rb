@@ -17,6 +17,13 @@ def save()
   @id = returned_result.first()['id'].to_i()
 end
 
+def update()
+  sql = "UPDATE artists SET (
+  name)
+  = ( '#{@name}')
+  WHERE id = #{@id}"
+  SqlRunner.run(sql)
+end
 
 def Artist.all()
   sql = "SELECT * FROM artists;"

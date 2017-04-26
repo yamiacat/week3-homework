@@ -25,6 +25,15 @@ def Album.all()
   return albums_hashes.map {|album| Album.new(album)}
 end
 
+def update()
+  sql = "UPDATE albums SET (
+  title, genre, album_artist)
+  = ( '#{@title}', '#{@genre}', #{@album_artist})
+  WHERE id = #{@id}"
+  SqlRunner.run(sql)
+end
+
+
 
 def artist
   sql = "SELECT * FROM artists WHERE id = #{@album_artist}"
