@@ -26,6 +26,11 @@ def Album.all()
 end
 
 
+def artist
+  sql = "SELECT * FROM artists WHERE id = #{@album_artist}"
+  returned_artist = SqlRunner.run(sql)
+  return Artist.new(returned_artist[0])
+end
 
 
 
