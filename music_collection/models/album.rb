@@ -1,4 +1,4 @@
-require_relative("../db/sql_runnner.rb")
+require_relative("../db/sql_runner.rb")
 require_relative("./artist.rb")
 
 class Album
@@ -14,6 +14,9 @@ class Album
 
 def save()
   sql = "INSERT INTO albums (title, genre) VALUES ('#{@title}', '#{@genre}') RETURNING *;"
+  returned_result = SqlRunner.run(sql)
+  @id = returned_result.first()['id'].to_i()
+end
 
 
 
