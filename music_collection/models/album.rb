@@ -38,6 +38,10 @@ def Album.delete_all
   SqlRunner.run(sql)
 end
 
+def delete()
+  sql = "DELETE FROM albums WHERE id = #{@id}"
+  SqlRunner.run(sql)
+end
 
 def artist
   sql = "SELECT * FROM artists WHERE id = #{@album_artist}"
