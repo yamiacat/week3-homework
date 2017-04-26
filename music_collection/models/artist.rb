@@ -24,6 +24,12 @@ def Artist.all()
   return artists_hashes.map {|artist| Artist.new(artist)}
 end
 
+def list_albums
+  sql = "SELECT * FROM albums WHERE album_artist = #{@id}"
+  album_hashes = SqlRunner.run(sql)
+  return album_hashes.map {|album| Album.new(album)}
+end
+
 
 
 end
