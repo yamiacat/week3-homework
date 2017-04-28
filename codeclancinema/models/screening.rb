@@ -19,9 +19,14 @@ class Screening
   end
 
 
-    def Screening.delete_all()
-      sql = "DELETE FROM screenings;"
-      SqlRunner.run(sql)
-    end
+  def Screening.delete_all()
+    sql = "DELETE FROM screenings;"
+    SqlRunner.run(sql)
+  end
+
+  def delete()
+    sql = "DELETE FROM screenings WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
 
 end

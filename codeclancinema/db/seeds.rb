@@ -96,6 +96,30 @@ screening5.save
 screening6.save
 
 
+customer1 = Customer.new({
+  'name' => 'Tetsuo',
+  'funds' => 50,
+  'age' => 17
+  })
+
+customer2 = Customer.new({
+  'name' => 'Deckard',
+  'funds' => 100,
+  'age' => 36
+  })
+
+customer3 = Customer.new({
+  'name' => 'Hal',
+  'funds' => 15,
+  'age' => 10
+  })
+
+customer1.save
+customer2.save
+customer3.save
+
+
+
 
 binding.pry
 nil
