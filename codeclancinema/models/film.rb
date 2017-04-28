@@ -27,4 +27,12 @@ class Film
     SqlRunner.run(sql)
   end
 
+  def Film.all
+    sql = "SELECT * FROM films;"
+    returned_result = SqlRunner.run(sql)
+    return returned_result.map{|film| Film.new(film)}
+  end
+
+
+  
 end
