@@ -8,7 +8,7 @@ class Screening
     @id = details['id'].to_i
     @screening_date = details['screening_date']
     @screening_time = details['screening_time']
-    @screening_film = details['screening_film']
+    @screening_film = details['screening_film'].to_i
     @price = details['price'].to_i
   end
 
@@ -30,15 +30,26 @@ class Screening
   end
 
 
-  def Screening.all
+  def Screening.all()
     sql = "SELECT * FROM screenings;"
     returned_result = SqlRunner.run(sql)
     return returned_result.map{|screening| Screening.new(screening)}
   end
 
-  def update
+  def update()
     sql = "UPDATE screenings SET (screening_date, screening_time, screening_film, price) = ('#{@screening_date}', '#{@screening_time}', #{@screening_film}, #{@price}) WHERE id = #{@id}"
-    SqlRunner.run(sql)
+    return SqlRunner.run(sql)
   end
+
+  def film_title()
+    sql = "SELECT f.title FROM films f INNER JOIN screenings s ON s.screening_film = f.id WHERE s.id = #{@id};"
+    result = SqlRunner.run(sql).first
+    return result['title']
+  end
+
+  # def customers_attending
+  #   sql = "SELECT * FROM  "
+  #
+  # end
 
 end

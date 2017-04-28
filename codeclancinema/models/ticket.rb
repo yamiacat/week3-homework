@@ -30,14 +30,14 @@ class Ticket
   end
 
 
-  def Ticket.all
+  def Ticket.all()
     sql = "SELECT * FROM tickets;"
     returned_result = SqlRunner.run(sql)
     return returned_result.map{|ticket| Ticket.new(ticket)}
   end
 
 
-  def update
+  def update()
     sql = "UPDATE tickets SET (customer_id, screening_id) = (#{@customer_id}, #{@screening_id}) WHERE id = #{@id}"
     SqlRunner.run(sql)
   end

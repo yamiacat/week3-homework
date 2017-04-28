@@ -27,13 +27,13 @@ class Film
     SqlRunner.run(sql)
   end
 
-  def Film.all
+  def Film.all()
     sql = "SELECT * FROM films;"
     returned_result = SqlRunner.run(sql)
     return returned_result.map{|film| Film.new(film)}
   end
 
-  def update
+  def update()
     sql = "UPDATE films SET (title, certificate) = ('#{@title}', '#{@certificate}') WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
