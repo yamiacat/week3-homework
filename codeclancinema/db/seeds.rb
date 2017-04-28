@@ -28,3 +28,10 @@ film4 = Film.new({
 'title' => 'Event Horizon',
 'certificate' => '18'
 })
+
+
+
+
+
+binding.pry
+nil

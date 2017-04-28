@@ -1,3 +1,5 @@
+require_relative("../db/sql_runner")
+
 class Screening
   attr_reader :id
   attr_accessor :screening_date, :screening_time, :screening_film, :price
