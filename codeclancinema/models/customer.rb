@@ -10,4 +10,11 @@ class Customer
     @age = details['age'].to_i
   end
 
+  def save()
+    sql = "INSERT INTO customers (name, funds, age) VALUES ('#{@name}', #{@funds}, #{@age}) RETURNING id;"
+    returned_result = SqlRunner.run(sql)
+    @id = returned_result.first()['id'].to_i
+  end
+
+
 end

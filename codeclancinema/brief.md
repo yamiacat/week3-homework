@@ -3,7 +3,7 @@
 Create a system that handles bookings for our newly built cinema!
 It's enough if you can call your methods in pry, don't worry about an interface.
 
-### Your app should have:
+<!-- ### Your app should have:
   - Customers
     - name
     - funds
@@ -14,7 +14,7 @@ It's enough if you can call your methods in pry, don't worry about an interface.
 
   - Tickets
     - customer_id
-    - film_id
+    - film_id -->
 
 ### Your app should be able to:
   - Create customers, films and tickets

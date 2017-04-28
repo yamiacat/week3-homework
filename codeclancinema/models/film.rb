@@ -9,4 +9,10 @@ class Film
     @certificate = details['certificate']
   end
 
+  def save()
+    sql = "INSERT INTO films (title, certificate) VALUES ('#{@title}', '#{@certificate}') RETURNING id;"
+    returned_result = SqlRunner.run(sql)
+    @id = returned_result.first()['id'].to_i
+  end
+
 end

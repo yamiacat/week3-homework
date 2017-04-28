@@ -10,6 +10,10 @@ class Screening
     @price = details['price'].to_i
   end
 
-
+  def save()
+    sql = "INSERT INTO screenings (screening_date, screening_time, screening_film, price) VALUES ('#{@screening_date}', '#{@screening_time}', #{@screening_film}, #{@price}) RETURNING id;"
+    returned_result = SqlRunner.run(sql)
+    @id = returned_result.first()['id'].to_i
+  end
 
 end
