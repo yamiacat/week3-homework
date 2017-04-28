@@ -7,7 +7,8 @@ DROP TABLE IF EXISTS customers;
 CREATE TABLE customers (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
-  funds INT4
+  funds INT4,
+  age INT4
 );
 
 CREATE TABLE films (
@@ -20,7 +21,8 @@ CREATE TABLE screenings (
   id SERIAL4 PRIMARY KEY,
   screening_date DATE,
   screening_time VARCHAR(255),
-  screening_film INT4 REFERENCES films(id) ON DELETE CASCADE
+  screening_film INT4 REFERENCES films(id) ON DELETE CASCADE,
+  price INT4
 );
 
 CREATE TABLE tickets (
