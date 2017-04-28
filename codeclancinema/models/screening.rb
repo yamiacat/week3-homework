@@ -16,4 +16,10 @@ class Screening
     @id = returned_result.first()['id'].to_i
   end
 
+
+    def Screening.delete_all()
+      sql = "DELETE FROM screenings;"
+      SqlRunner.run(sql)
+    end
+
 end
