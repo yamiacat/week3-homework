@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner")
+require_relative("./customer.rb")
 
 class Screening
   attr_reader :id
@@ -47,9 +48,18 @@ class Screening
     return result['title']
   end
 
-  # def customers_attending
-  #   sql = "SELECT * FROM  "
-  #
-  # end
+  def customers_attending()
+    sql = "SELECT c.* FROM customers c INNER JOIN tickets t ON c.id = t.customer_id INNER JOIN screenings s ON t.screening_id = s.id WHERE s.id = #{@id};"
+
+    result_hash = SqlRunner.run(sql)
+
+    customer_array = result_hash.map{|customer| Customer.new(customer)}
+
+    return_array = ["There are #{customer_array.count} customers booked to attend:"]
+
+    customer_array.each{|customer| return_array << "#{customer.name}"}
+
+    return return_array.join("\n- ")
+  end
 
 end
