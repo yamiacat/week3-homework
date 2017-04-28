@@ -33,6 +33,9 @@ class Film
     return returned_result.map{|film| Film.new(film)}
   end
 
+  def update
+    sql = "UPDATE films SET (title, certificate) = ('#{@title}', '#{@certificate}') WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
 
-  
 end
