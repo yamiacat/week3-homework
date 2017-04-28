@@ -29,7 +29,71 @@ film4 = Film.new({
 'certificate' => '18'
 })
 
+film5 = Film.new({
+'title' => 'Escape From New York',
+'certificate' => '15'
+})
 
+film6 = Film.new({
+'title' => 'Europa Report',
+'certificate' => '12'
+})
+
+film1.save
+film2.save
+film3.save
+film4.save
+film5.save
+film6.save
+
+screening1 = Screening.new({
+  'screening_date' => '29/04/2017',
+  'screening_time' => '17.00',
+  'screening_film' => film1.id,
+  'price' => '800'
+  })
+
+screening2 = Screening.new({
+  'screening_date' => '29/04/2017',
+  'screening_time' => '20.00',
+  'screening_film' => film2.id,
+  'price' => '1000'
+  })
+
+screening3 = Screening.new({
+  'screening_date' => '29/04/2017',
+  'screening_time' => '23.00',
+  'screening_film' => film5.id,
+  'price' => '1000'
+  })
+
+screening4 = Screening.new({
+  'screening_date' => '30/04/2017',
+  'screening_time' => '17.00',
+  'screening_film' => film3.id,
+  'price' => '800'
+  })
+
+screening5 = Screening.new({
+  'screening_date' => '30/04/2017',
+  'screening_time' => '20.00',
+  'screening_film' => film6.id,
+  'price' => '1000'
+  })
+
+screening6 = Screening.new({
+  'screening_date' => '30/04/2017',
+  'screening_time' => '23.00',
+  'screening_film' => film4.id,
+  'price' => '1000'
+  })
+
+screening1.save
+screening2.save
+screening3.save
+screening4.save
+screening5.save
+screening6.save
 
 
 
