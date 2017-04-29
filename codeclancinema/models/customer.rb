@@ -63,26 +63,49 @@ class Customer
 #MAKES SENSE TO CALL THIS ON THE CUSTOMER? KINDA LIKE
 #LOGGING INTO YOUR ACCOUNT TO BEGIN?
 
+  # def buy_ticket(screening)
+  #   if  @age >= screening.film_certificate.to_i
+  #     if screening.tickets_sold_count < screening.capacity
+  #           if screening.price <= @funds
+  #             @funds -= screening.price
+  #             purchase = Ticket.new({
+  #               'customer_id' => "#{@id}",
+  #               'screening_id' => "#{screening.id}"
+  #               })
+  #               purchase.save
+  #               return "#{@name} has purchased a ticket for #{screening.film_title}."
+  #           else
+  #             return "Insufficent funds!"
+  #           end
+  #     else
+  #       return "I'm afraid that screening is sold out."
+  #     end
+  #   else
+  #     return "I'm going to need some ID there kid."
+  #   end
+  # end
+
+#REFACTORED VERSION - HOW TO REFACTOR FURTHER?
+
   def buy_ticket(screening)
-    if  @age >= screening.film_certificate.to_i
-      if screening.tickets_sold_count < screening.capacity
-            if screening.price <= @funds
-              @funds -= screening.price
-              purchase = Ticket.new({
-                'customer_id' => "#{@id}",
-                'screening_id' => "#{screening.id}"
-                })
-                purchase.save
-                return "#{@name} has purchased a ticket for #{screening.film_title}."
-            else
-              return "Insufficent funds!"
-            end
-      else
-        return "I'm afraid that screening is sold out."
-      end  
-    else
+    if  @age < screening.film_certificate.to_i
       return "I'm going to need some ID there kid."
+    elsif screening.tickets_sold_count >= screening.capacity
+      return "I'm afraid that screening is sold out."
+    elsif screening.price > @funds
+      return "Insufficent funds!"
+    else
+      @funds -= screening.price
+      purchase = Ticket.new({
+        'customer_id' => "#{@id}",
+        'screening_id' => "#{screening.id}"
+        })
+      purchase.save
+      return "#{@name} has purchased a ticket for #{screening.film_title}."
     end
   end
+
+
+
 
 end
