@@ -77,11 +77,24 @@ class Screening
     result_hash = SqlRunner.run(sql)
 
     customer_array = result_hash.map{|customer| Customer.new(customer)}
-    
+
     return customer_array.count
   end
 
 
+
+  def Screening.screening_table()
+    line_width = 60
+    return_table = ["Film Title (Cert.)".ljust(line_width/2) + "Date and Time of Showing".rjust(line_width/2)]
+
+    all_films = Screening.all
+
+    all_films.each{|showing| return_table << "#{showing.film_title} (#{showing.film_certificate})".ljust(line_width/2) + "#{showing.screening_date}, #{showing.screening_time}".rjust(line_width/2)}
+
+    return return_table.join("\n")
+
+
+  end
 
 
 end
