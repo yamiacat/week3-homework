@@ -1,5 +1,6 @@
 require_relative("../db/sql_runner")
 require_relative("./screening.rb")
+require_relative("./ticket.rb")
 
 class Customer
 
@@ -45,14 +46,35 @@ class Customer
   def films_booked()
     sql = "SELECT s.* FROM tickets t
     INNER JOIN screenings s ON t.screening_id = s.id WHERE t.customer_id = #{@id};"
-    films_booked_array = ["#{@name} has booked"]
 
     returned_result = SqlRunner.run(sql)
 
     booked_screenings = returned_result.map {|screening| Screening.new(screening)}
+
+    films_booked_array = ["#{@name} has booked #{booked_screenings.count} films:"]
+
     booked_screenings.each {|screening|
     films_booked_array << "#{screening.film_title} showing on #{screening.screening_date} at #{screening.screening_time}"}
-    return films_booked_array.join(", ")
+
+    return films_booked_array.join("\n- ")
+  end
+
+
+#MAKES SENSE TO CALL THIS ON THE CUSTOMER? KINDA LIKE
+#LOGGING INTO YOUR ACCOUNT TO BEGIN?
+
+  def buy_ticket(screening)
+    if screening.price <= @funds
+      @funds -= screening.price
+      purchase = Ticket.new({
+        'customer_id' => "#{@id}",
+        'screening_id' => "#{screening.id}"
+        })
+        purchase.save
+    else
+      return "Insufficent funds!"
+    end
+
   end
 
 end

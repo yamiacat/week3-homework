@@ -98,19 +98,19 @@ screening6.save
 
 customer1 = Customer.new({
   'name' => 'Tetsuo',
-  'funds' => 50,
+  'funds' => 50_00,
   'age' => 17
   })
 
 customer2 = Customer.new({
   'name' => 'Deckard',
-  'funds' => 100,
+  'funds' => 100_00,
   'age' => 36
   })
 
 customer3 = Customer.new({
   'name' => 'Hal',
-  'funds' => 15,
+  'funds' => 15_00,
   'age' => 10
   })
 

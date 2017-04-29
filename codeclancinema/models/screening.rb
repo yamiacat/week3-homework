@@ -1,6 +1,7 @@
 require_relative("../db/sql_runner")
 require_relative("./customer.rb")
 
+
 class Screening
   attr_reader :id
   attr_accessor :screening_date, :screening_time, :screening_film, :price
@@ -42,6 +43,7 @@ class Screening
     return SqlRunner.run(sql)
   end
 
+#MADE THIS GETTER TO EASILY LINK TITLES TO SCREENING
   def film_title()
     sql = "SELECT f.title FROM films f INNER JOIN screenings s ON s.screening_film = f.id WHERE s.id = #{@id};"
     result = SqlRunner.run(sql).first
@@ -61,5 +63,8 @@ class Screening
 
     return return_array.join("\n- ")
   end
+
+
+
 
 end
