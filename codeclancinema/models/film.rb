@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner")
+require_relative("./screening.rb")
 
 class Film
 
@@ -36,6 +37,19 @@ class Film
   def update()
     sql = "UPDATE films SET (title, certificate) = ('#{@title}', '#{@certificate}') WHERE id = #{@id}"
     SqlRunner.run(sql)
+  end
+
+  def most_popular_screening
+    sql = "SELECT s.* FROM screenings s INNER JOIN films f ON f.id = s.screening_film WHERE f.id = #{@id};"
+    screenings_hash = SqlRunner.run(sql)
+
+    screenings_array = screenings_hash.map{|screening| Screening.new(screening)}
+
+#ZOMG THANK YOU TO EOGHAN FOR HELPING ME WITH THIS BIT
+    most_popular = screenings_array.max { |a, b| a.tickets_sold_count <=> b.tickets_sold_count }
+
+    return "The #{most_popular.screening_date}, #{most_popular.screening_time} showing is the most popular."
+
   end
 
 end

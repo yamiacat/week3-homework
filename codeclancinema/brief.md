@@ -27,7 +27,7 @@ It's enough if you can call your methods in pry, don't worry about an interface.
   - Check how many customers are going to watch a certain film -->
 
 ### Advanced extensions:
-  - Create a screenings table that lets us know what time films are showing - "with info?"
+  <!-- - Create a screenings table that lets us know what time films are showing - "with info?" -->
     - Write a method that finds out what is the most popular time (most tickets sold) for a given film
   <!-- - Limit the available tickets for screenings. -->
   <!-- - age check -->

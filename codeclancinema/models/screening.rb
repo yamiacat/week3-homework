@@ -1,5 +1,6 @@
 require_relative("../db/sql_runner")
 require_relative("./customer.rb")
+require_relative("./ticket.rb")
 
 
 class Screening
@@ -16,7 +17,7 @@ class Screening
   end
 
   def save()
-    sql = "INSERT INTO screenings (screening_date, screening_time, screening_film, price) VALUES ('#{@screening_date}', '#{@screening_time}', #{@screening_film}, #{@price}) RETURNING id;"
+    sql = "INSERT INTO screenings (screening_date, screening_time, screening_film, price, capacity) VALUES ('#{@screening_date}', '#{@screening_time}', #{@screening_film}, #{@price}, #{@capacity}) RETURNING id;"
     returned_result = SqlRunner.run(sql)
     @id = returned_result.first()['id'].to_i
   end
@@ -40,7 +41,7 @@ class Screening
   end
 
   def update()
-    sql = "UPDATE screenings SET (screening_date, screening_time, screening_film, price) = ('#{@screening_date}', '#{@screening_time}', #{@screening_film}, #{@price}) WHERE id = #{@id}"
+    sql = "UPDATE screenings SET (screening_date, screening_time, screening_film, price, capacity) = ('#{@screening_date}', '#{@screening_time}', #{@screening_film}, #{@price}, #{@capacity}) WHERE id = #{@id}"
     return SqlRunner.run(sql)
   end
 
@@ -72,13 +73,13 @@ class Screening
   end
 
   def tickets_sold_count()
-    sql = "SELECT c.* FROM customers c INNER JOIN tickets t ON c.id = t.customer_id INNER JOIN screenings s ON t.screening_id = s.id WHERE s.id = #{@id};"
+    sql = "SELECT t.* FROM tickets t INNER JOIN screenings s ON t.screening_id = s.id WHERE s.id = #{@id};"
 
     result_hash = SqlRunner.run(sql)
 
-    customer_array = result_hash.map{|customer| Customer.new(customer)}
+    ticket_array = result_hash.map{|ticket| Ticket.new(ticket)}
 
-    return customer_array.count
+    return ticket_array.count
   end
 
 

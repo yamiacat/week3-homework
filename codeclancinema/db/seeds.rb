@@ -94,13 +94,21 @@ screening6 = Screening.new({
   'capacity' => '100'
   })
 
+screening7 = Screening.new({
+  'screening_date' => '01/05/2017',
+  'screening_time' => '20.00',
+  'screening_film' => film3.id,
+  'price' => '800',
+  'capacity' => '3'
+  })
+
 screening1.save
 screening2.save
 screening3.save
 screening4.save
 screening5.save
 screening6.save
-
+screening7.save
 
 customer1 = Customer.new({
   'name' => 'Tetsuo',
