@@ -4,7 +4,7 @@ require_relative("./customer.rb")
 
 class Screening
   attr_reader :id
-  attr_accessor :screening_date, :screening_time, :screening_film, :price
+  attr_accessor :screening_date, :screening_time, :screening_film, :price, :capacity
 
   def initialize(details)
     @id = details['id'].to_i
@@ -12,6 +12,7 @@ class Screening
     @screening_time = details['screening_time']
     @screening_film = details['screening_film'].to_i
     @price = details['price'].to_i
+    @capacity = details['capacity'].to_i
   end
 
   def save()
@@ -68,6 +69,16 @@ class Screening
     customer_array.each{|customer| return_array << "#{customer.name}"}
 
     return return_array.join("\n- ")
+  end
+
+  def tickets_sold_count()
+    sql = "SELECT c.* FROM customers c INNER JOIN tickets t ON c.id = t.customer_id INNER JOIN screenings s ON t.screening_id = s.id WHERE s.id = #{@id};"
+
+    result_hash = SqlRunner.run(sql)
+
+    customer_array = result_hash.map{|customer| Customer.new(customer)}
+    
+    return customer_array.count
   end
 
 

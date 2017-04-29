@@ -50,42 +50,48 @@ screening1 = Screening.new({
   'screening_date' => '29/04/2017',
   'screening_time' => '17.00',
   'screening_film' => film1.id,
-  'price' => '800'
+  'price' => '800',
+  'capacity' => '100'
   })
 
 screening2 = Screening.new({
   'screening_date' => '29/04/2017',
   'screening_time' => '20.00',
   'screening_film' => film2.id,
-  'price' => '1000'
+  'price' => '1000',
+  'capacity' => '100'
   })
 
 screening3 = Screening.new({
   'screening_date' => '29/04/2017',
   'screening_time' => '23.00',
   'screening_film' => film5.id,
-  'price' => '1000'
+  'price' => '1000',
+  'capacity' => '100'
   })
 
 screening4 = Screening.new({
   'screening_date' => '30/04/2017',
   'screening_time' => '17.00',
   'screening_film' => film3.id,
-  'price' => '800'
+  'price' => '800',
+  'capacity' => '3'
   })
 
 screening5 = Screening.new({
   'screening_date' => '30/04/2017',
   'screening_time' => '20.00',
   'screening_film' => film6.id,
-  'price' => '1000'
+  'price' => '1000',
+  'capacity' => '100'
   })
 
 screening6 = Screening.new({
   'screening_date' => '30/04/2017',
   'screening_time' => '23.00',
   'screening_film' => film4.id,
-  'price' => '1000'
+  'price' => '1000',
+  'capacity' => '100'
   })
 
 screening1.save
