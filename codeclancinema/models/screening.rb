@@ -50,6 +50,12 @@ class Screening
     return result['title']
   end
 
+  def film_certificate()
+    sql = "SELECT f.certificate FROM films f INNER JOIN screenings s ON s.screening_film = f.id WHERE s.id = #{@id};"
+    result = SqlRunner.run(sql).first
+    return result['certificate']
+  end
+
   def customers_attending()
     sql = "SELECT c.* FROM customers c INNER JOIN tickets t ON c.id = t.customer_id INNER JOIN screenings s ON t.screening_id = s.id WHERE s.id = #{@id};"
 

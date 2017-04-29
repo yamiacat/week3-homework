@@ -22,7 +22,7 @@ It's enough if you can call your methods in pry, don't worry about an interface.
   <!-- - Show which films a customer has booked to see, and see which customers are coming to see one film. -->
 
 ### Basic extensions:
-  - Buying tickets should decrease the funds of the customer by the price
+  <!-- - Buying tickets should decrease the funds of the customer by the price -->
   <!-- - Check how many tickets were bought by a customer
   - Check how many customers are going to watch a certain film -->
 
@@ -30,7 +30,7 @@ It's enough if you can call your methods in pry, don't worry about an interface.
   - Create a screenings table that lets us know what time films are showing - "with info?"
     - Write a method that finds out what is the most popular time (most tickets sold) for a given film
   - Limit the available tickets for screenings.
-  - age check
+  <!-- - age check -->
   - Add any other extensions you think would be great to have at a cinema!
 
 Possible useful info on constraints:
